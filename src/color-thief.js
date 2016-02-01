@@ -297,8 +297,12 @@ var MMCQ = (function() {
                 if (!sorted) sort();
                 return contents;
             },
-            sort: function(){
-                contents.sort(comparator);
+            sort: function(override){
+                if(override){
+                    contents.sort(override);
+                }else{
+                    contents.sort(comparator);
+                }
                 sorted = true;
             }
         };
