@@ -312,6 +312,9 @@ var MMCQ = (function() {
         vbox.histo = histo;
     }
     VBox.prototype = {
+        product: function(force){
+            return this.volume(force) * this.count(force);
+        },
         volume: function(force) {
             var vbox = this;
             if (!vbox._volume || force) {
