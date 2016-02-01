@@ -267,12 +267,12 @@ var MMCQ = (function() {
     function PQueue(comparator) {
         var contents = [],
             sorted = false;
-
+        /**
         function sort() {
             contents.sort(comparator);
             sorted = true;
         }
-
+        **/
         return {
             push: function(o) {
                 contents.push(o);
@@ -284,7 +284,7 @@ var MMCQ = (function() {
                 return contents[index];
             },
             pop: function() {
-                if (!sorted) sort();
+                if (!sorted) this.sort();
                 return contents.pop();
             },
             size: function() {
@@ -296,6 +296,10 @@ var MMCQ = (function() {
             debug: function() {
                 if (!sorted) sort();
                 return contents;
+            },
+            sort: function(){
+                contents.sort(comparator);
+                sorted = true;
             }
         };
     }
